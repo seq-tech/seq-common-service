@@ -1,0 +1,44 @@
+# golangci-lint 配置：以可读性与安全性为主，避免过度严格阻塞开发。
+run:
+  timeout: 5m
+  tests: true
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - gosimple
+    - bodyclose
+    - misspell
+    - revive
+    - gosec
+    - goconst
+    - unconvert
+    - nakedret
+    - noctx
+
+linters-settings:
+  revive:
+    rules:
+      - name: exported
+        severity: warning
+  goconst:
+    min-len: 3
+    min-occurrences: 4
+  gosec:
+    excludes:
+      # 生成的雪花 ID 与响应体不涉及文件权限与命令执行。
+      - G104
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gosec
+        - goconst
+        - errcheck
+  max-issues-per-linter: 0
+  max-same-issues: 0
