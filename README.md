@@ -6,27 +6,27 @@
 
 ## 包一览
 
-| 包 | 说明 |
-| --- | --- |
-| `pkg/errcode` | 业务错误码类型 `Code`、业务错误 `Error`，以及错误码注册表 |
-| `pkg/response` | 统一 HTTP 响应体与输出方法 |
-| `pkg/binder` | gin 参数绑定封装，绑定失败直接输出中文参数错误 |
-| `pkg/validator` | 自定义校验规则（phone/password/username/alphanumdash）与中文翻译 |
-| `pkg/ctxkeys` | gin Context / HTTP Header 键名常量 |
-| `pkg/jwt` | Access / Refresh 双令牌签发与解析 |
-| `pkg/hash` | bcrypt 密码哈希与强度校验 |
-| `pkg/idgen` | Snowflake ID 生成 |
-| `pkg/pagination` | 分页参数归一化与 SQL Offset/Limit |
+| 包               | 说明                                                             |
+| ---------------- | ---------------------------------------------------------------- |
+| `pkg/errcode`    | 业务错误码类型 `Code`、业务错误 `Error`，以及错误码注册表        |
+| `pkg/response`   | 统一 HTTP 响应体与输出方法                                       |
+| `pkg/binder`     | gin 参数绑定封装，绑定失败直接输出中文参数错误                   |
+| `pkg/validator`  | 自定义校验规则（phone/password/username/alphanumdash）与中文翻译 |
+| `pkg/ctxkeys`    | gin Context / HTTP Header 键名常量                               |
+| `pkg/jwt`        | Access / Refresh 双令牌签发与解析                                |
+| `pkg/hash`       | bcrypt 密码哈希与强度校验                                        |
+| `pkg/idgen`      | Snowflake ID 生成                                                |
+| `pkg/pagination` | 分页参数归一化与 SQL Offset/Limit                                |
 
 ## 错误码约定
 
 本库提供三段通用码，各服务在 `internal/errcodes` 中定义自己的业务码并在 `init` 注册：
 
-| 码段 | 归属 |
-| --- | --- |
-| `1xxxx` | 通用错误（本库） |
-| `3xxxx` | 认证域（本库） |
-| `4xxxx` | 权限域（本库） |
+| 码段           | 归属                           |
+| -------------- | ------------------------------ |
+| `1xxxx`        | 通用错误（本库）               |
+| `3xxxx`        | 认证域（本库）                 |
+| `4xxxx`        | 权限域（本库）                 |
 | `2xxxx` 及其他 | 各服务自有领域码（服务内定义） |
 
 服务侧写法：
