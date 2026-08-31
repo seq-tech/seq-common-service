@@ -57,10 +57,10 @@ func init() {
 
 ## 本地开发
 
-尚未推送 tag 时，服务侧可临时在 `go.mod` 中加：
+需要在服务里联调本库未发布的改动时，临时在服务的 `go.mod` 中加：
 
 ```
 replace github.com/seq-tech/seq-common-service => ../seq-common-service
 ```
 
-tag 发布后移除该 replace。
+联调结束、tag 发布后必须移除该 replace。
